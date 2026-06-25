@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Environment
+.env
+.env.local
+
+# Data (large files)
+data/filings/*
+!data/filings/.gitkeep
+
+# Results from local runs
+*.log
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker volumes
+postgres_data/
+elasticsearch_data/
+redis_data/
