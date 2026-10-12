@@ -72,7 +72,7 @@ def fix_metadata() -> None:
                         ),
                     )
                     tqdm.write(
-                        f" ✓ {company} {year}:"
+                        f" ✓ {companyi} {year}:"
                         f"accession={filing['accession_number']}, "
                         f"filed={filing['filing_date']}, "
                     )
