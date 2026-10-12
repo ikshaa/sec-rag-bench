@@ -1,0 +1,1978 @@
+{
+  "config": {
+    "chunking": "fixed_500_overlap_50",
+    "embedding_model": "text-embedding-3-small",
+    "retrieval": "hybrid_rrf_plus_bge_reranker",
+    "top_k": 5,
+    "generation_model": "claude-haiku-4-5"
+  },
+  "summary": {
+    "overall": {
+      "n": 100,
+      "recall_at_5": 0.7529411764705882,
+      "precision_at_5": 0.28705882352941176,
+      "citation_accuracy": 0.7176470588235294,
+      "faithfulness": 0.8425131078072254,
+      "answer_relevancy": 0.6404515318460171,
+      "refusal_accuracy": 1.0
+    },
+    "by_category": {
+      "comparison": {
+        "n": 8,
+        "recall_at_5": 0.5,
+        "precision_at_5": 0.15000000000000002,
+        "citation_accuracy": 0.5,
+        "faithfulness": 0.8837797619047619,
+        "answer_relevancy": 0.5667333240512152,
+        "refusal_accuracy": null
+      },
+      "factual": {
+        "n": 32,
+        "recall_at_5": 0.875,
+        "precision_at_5": 0.375,
+        "citation_accuracy": 0.8125,
+        "faithfulness": 0.8773084554334555,
+        "answer_relevancy": 0.7147443352600937,
+        "refusal_accuracy": null
+      },
+      "multi_hop": {
+        "n": 14,
+        "recall_at_5": 0.42857142857142855,
+        "precision_at_5": 0.1142857142857143,
+        "citation_accuracy": 0.42857142857142855,
+        "faithfulness": 0.8127878074306646,
+        "answer_relevancy": 0.3898129141714467,
+        "refusal_accuracy": null
+      },
+      "negation": {
+        "n": 14,
+        "recall_at_5": 0.9285714285714286,
+        "precision_at_5": 0.35714285714285715,
+        "citation_accuracy": 0.8571428571428571,
+        "faithfulness": 0.8202380952380952,
+        "answer_relevancy": 0.5914073756483562,
+        "refusal_accuracy": null
+      },
+      "numerical": {
+        "n": 17,
+        "recall_at_5": 0.7647058823529411,
+        "precision_at_5": 0.2705882352941177,
+        "citation_accuracy": 0.7647058823529411,
+        "faithfulness": 0.8004201680672269,
+        "answer_relevancy": 0.7820947546294995,
+        "refusal_accuracy": null
+      },
+      "unanswerable": {
+        "n": 15,
+        "recall_at_5": null,
+        "precision_at_5": null,
+        "citation_accuracy": null,
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "refusal_accuracy": 1.0
+      }
+    }
+  },
+  "per_question": [
+    {
+      "question_id": "q_001",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.946108261952974,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "apple_2024",
+        "google_2023",
+        "google_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "According to the provided context, Apple's principal executive offices are located at [1][2]:\n\n**One Apple Park Way, Cupertino, California 95014**"
+    },
+    {
+      "question_id": "q_002",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "costco_2024",
+        "costco_2023",
+        "costco_2023",
+        "costco_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided contains information about long-term debt from Microsoft's 2023 10-K and Costco's 2023 and 2024 10-Ks, but does not include any information about Tesla's long-term debt."
+    },
+    {
+      "question_id": "q_003",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "tesla_2024",
+        "nvidia_2024",
+        "tesla_2024",
+        "tesla_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided from Tesla's 2024 10-K [4] only shows that as of December 31, 2024, Tesla had $7.91 billion in outstanding indebtedness. However, there is no comparable figure provided for December 31, 2023, so I cannot determine how the total indebtedness changed between these two fiscal years."
+    },
+    {
+      "question_id": "q_004",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7673256851355689,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2023",
+        "tesla_2023",
+        "amazon_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "According to the context provided, Tesla states that it does NOT typically maintain as much insurance coverage as many other companies do, and in some cases, it does not maintain any insurance coverage at all [3].\n\nSpecifically, the context indicates that Tesla \"does not maintain as much insurance coverage as many other companies do, and in some cases, we do not maintain any at all\" [3]."
+    },
+    {
+      "question_id": "q_005",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "microsoft_2024",
+        "apple_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided includes excerpts from Apple's 2024 10-K filing, but the sections shown focus on selling, general and administrative expenses and income tax provisions. They do not contain information about Tim Cook's compensation for fiscal year 2024."
+    },
+    {
+      "question_id": "q_006",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.7828713797734395,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "google_2023",
+        "amazon_2023",
+        "netflix_2023",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the context provided, the aggregate market value of voting stock held by non-affiliates as of June 30, 2023 varies by company:\n\n- **Tesla**: $722.52 billion [1]\n- **Google**: approximately $1,331.2 billion [2]\n- **Amazon**: $1,183,684,965,587 (approximately $1.18 trillion) [3]\n- **Netflix**: $192,301,932,760 (approximately $192.3 billion) [4]\n\nNote: NVIDIA's 10-K filing provided is from 2024 and uses a measurement date of July 28, 2023 rather than June 30, 2023, so it is not included in this comparison [5]."
+    },
+    {
+      "question_id": "q_007",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.8,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.9285714285714286,
+      "answer_relevancy": 0.9821242787414856,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "According to the context, Tesla's two reportable segments are [1][5]:\n\n1. **Automotive** - which includes the design, development, manufacturing, sales and leasing of electric vehicles as well as sales of automotive regulatory credits. This segment also includes services and other, such as sales of used vehicles, non-warranty maintenance services, and collision and part sales.\n\n2. **Energy generation and storage** - which encompasses Tesla's energy-related business operations."
+    },
+    {
+      "question_id": "q_008",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9345451095257363,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "According to the context, as of fiscal 2023, Tesla's insurance products were available in 12 states [1]."
+    },
+    {
+      "question_id": "q_009",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8763467893727798,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the context provided, I can see Tesla's gross profit for fiscal year 2023 broken down by segment:\n\n**Automotive segment gross profit for 2023:** $16,519 million [1]\n\n**Energy generation and storage segment gross profit for 2023:** $1,141 million [1]\n\n**Total gross profit for fiscal year 2023:** $17,660 million (or approximately $17.66 billion)\n\nThis is calculated by adding the automotive segment gross profit of $16,519 million and the energy generation and storage segment gross profit of $1,141 million [1]."
+    },
+    {
+      "question_id": "q_010",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.999999694246157,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2023"
+      ],
+      "generated_answer": "According to the context provided, Tesla's automotive sales revenue for fiscal year 2022 was $67,210 million [1][2]."
+    },
+    {
+      "question_id": "q_011",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8,
+      "answer_relevancy": 1.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "nvidia_2024",
+        "google_2024"
+      ],
+      "generated_answer": "No, Tesla's convertible note hedges are not considered dilutive when calculating potentially dilutive shares. \n\nAccording to the context, \"our convertible note hedges are not included when calculating potentially dilutive shares since their effect is alw[ays]...\" [1] The sentence appears to be cut off, but it indicates that the convertible note hedges are excluded from the dilutive shares calculation."
+    },
+    {
+      "question_id": "q_012",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.8,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9117754053926096,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2023"
+      ],
+      "generated_answer": "According to the context, Tesla recorded **$204 million** in impairment losses on digital assets for the year ended December 31, 2022. [1][2][3][4]"
+    },
+    {
+      "question_id": "q_013",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.799292731198665,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "Based on the provided context, Panasonic has partnered with Tesla at **Gigafactory Nevada** to manufacture and supply battery cells. [1]\n\nSpecifically, the context states that \"Panasonic has partnered with us on Gigafactory Nevada with investments in the production equipment that it uses to manufacture and supply us with battery cells.\" [1]"
+    },
+    {
+      "question_id": "q_014",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provides Tesla's total worldwide employee headcount as of December 31, 2023 (140,473 employees) [1], but it does not contain any information about how many employees Elon Musk personally hired or any breakdown of hiring by individual person."
+    },
+    {
+      "question_id": "q_015",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context mentions the Tesla Semi as a commercial electric vehicle that Tesla began producing and delivering in 2022 [2], and references it as part of their manufacturing capacity plans [4][5]. However, the provided excerpts do not contain specifications about the mileage range per charge of the Tesla Semi truck."
+    },
+    {
+      "question_id": "q_016",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9999997906750849,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "netflix_2024"
+      ],
+      "generated_answer": "No, Tesla does not present short-term leases on its consolidated balance sheet. According to Tesla's 10-K filing, \"We have elected not to present short-term leases on the consolidated balance sheet as these leases have a lease term of 12 months or less at lease inception and do not contain purchase options or renewal terms that we are reasonably certain to exercise.\" [4]"
+    },
+    {
+      "question_id": "q_017",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.16666666666666666,
+      "answer_relevancy": 0.9730488629729223,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "google_2023",
+        "google_2023",
+        "tesla_2023",
+        "tesla_2023"
+      ],
+      "generated_answer": "Based on the context provided, I can calculate this proportion using the data from Tesla's 2023 10-K [1].\n\nAccording to the future minimum master lease payments table:\n- Total payments thereafter (after 2028): $337 million\n- Total future minimum master lease payments: $468 million\n\nThe proportion of Tesla's expected future minimum master lease payments from investors scheduled to arrive after 2028 is:\n\n$337 million / $468 million = **72.0%**\n\n[1]"
+    },
+    {
+      "question_id": "q_018",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8219697729360013,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "netflix_2024"
+      ],
+      "generated_answer": "Based on the context provided, for a tranche of Tesla's 2018 CEO Performance Award to vest, the two categories of milestones that must both be achieved are:\n\n1. **Operational milestones (performance conditions)** [1]\n2. **Market conditions** [1]\n\nAfter exercising the options and upon vesting, the CEO must hold the shares acquired for **five years post-exercise**, with the exception of a cashless exercise where shares are simultaneously sold to pay for the exercise price and any required tax withholding [2]."
+    },
+    {
+      "question_id": "q_019",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2023",
+        "netflix_2023",
+        "tesla_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "Based on the context provided:\n\nAs of December 31, 2023, Tesla had **$655 million of unrecognized stock-based compensation expense** under its Other Performance-Based Grants [1].\n\nHowever, the context does not contain complete information about how much stock-based compensation expense Tesla actually recognized under those grants during fiscal 2023. The provided text is cut off mid-sentence and only shows: \"For the years ended December 31, 2023 and 2022, we recorded $57 million and $159 million, respectively, of s\" [1], but the sentence is incomplete, so I cannot definitively confirm whether these figures refer specifically to the Other Performance-Based Grants or to a different category of awards."
+    },
+    {
+      "question_id": "q_020",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.6872773664243751,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "According to the context, in November 2022, Tesla opened up its previously proprietary charging connector as the **North American Charging Standard (NACS)**. This enables electric vehicles and charging stations to interoperate, which makes charging easier and more efficient for everyone and advances Tesla's mission to accelerate the world's transition to sustainable energy [1][2]."
+    },
+    {
+      "question_id": "q_021",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9682944555514439,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "According to the provided context, Tesla launched its insurance product using real-time driving behavior in 2021 [1][2]."
+    },
+    {
+      "question_id": "q_022",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9048518518148975,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024"
+      ],
+      "generated_answer": "According to the provided context, qualifying Tesla customers may receive up to **$7,500** in federal tax credits for the purchase of qualified electric vehicles in the U.S. through 2032 under current legislation [1][2]."
+    },
+    {
+      "question_id": "q_023",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9543150312450956,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "Based on the provided context, Tesla uses **lithium-ion cells** in the high voltage battery packs for its vehicles and energy storage products [1][2]."
+    },
+    {
+      "question_id": "q_024",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.962093992452662,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023"
+      ],
+      "generated_answer": "Based on the provided context, here are the target audiences and objectives for each program:\n\n## Military Fellowship Program [1][4]\n\n**Target Audience:** Exiting military service members\n\n**Objectives:** \n- Offers corporate industry experience during their transition in service [1]\n- Aims to convert high-performing individuals to full-time roles [1]\n- Creates a veteran talent pipeline for opportunities across Tesla North America [1]\n\n## Manufacturing Development Program [1][5]\n\n**Target Audience:** Graduating high school seniors and early career individuals [1]\n\n**Objectives:**\n- Designed to provide graduating high school seniors with financial resources, coursework and experience needed to start a successful manufacturing career at Tesla [5]\n- Serves as a global manufacturing pathway program [1]\n- Tesla hired 373 graduates through this program in 2023, with a goal to grow the program to over 600 students annually across multiple facilities (Fremont Factory, Gigafactory Nevada, Gigafactory Texas and Gigafactory New York) in 2024 [5]"
+    },
+    {
+      "question_id": "q_025",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9319657965300161,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "costco_2024",
+        "tesla_2023",
+        "tesla_2023"
+      ],
+      "generated_answer": "According to Tesla's 2024 10-K, the market for its vehicles could be negatively affected by numerous factors, including [1]:\n\n\u2022 Perceptions about electric vehicle features, quality, safety, performance and cost;\n\u2022 Perceptions about the limited range over which electric vehicles may be driven on a single battery charge, and access to charging facilities;\n\u2022 Competition, including from other types of alternative fuel vehicles, plug-in hybrid electric vehicles and high fuel-economy internal combustion vehicles."
+    },
+    {
+      "question_id": "q_026",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.8089596676236978,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "apple_2024",
+        "apple_2023"
+      ],
+      "generated_answer": "Based on Tesla's 2024 10-K filing, here are Tesla's primary manufacturing facilities and their ownership status [1]:\n\n**Owned Facilities:**\n- Gigafactory Texas (Austin, Texas)\n- Fremont Factory (Fremont, California)\n- Gigafactory Nevada (Sparks, Nevada)\n- Gigafactory Berlin-Brandenburg (Grunheide, Germany)\n- Gigafactory Shanghai (Shanghai, China)*\n\n**Leased Facilities:**\n- Gigafactory New York (Buffalo, New York)\n- Megafactory (Lathrop, California)\n\n*Note: According to Tesla's 2023 10-K, for Gigafactory Shanghai, Tesla owns the building and the land use rights with an initial term of 50 years [2]."
+    },
+    {
+      "question_id": "q_027",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2024",
+        "amazon_2024",
+        "costco_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided contains information from Tesla, Amazon, Costco, and Apple 10-K filings, but does not include any information about SpaceX or rocket launches in 2024."
+    },
+    {
+      "question_id": "q_028",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context mentions that Tesla provides \"paid time off\" as a benefit [2], but it does not specify the number of hours of leave that employees are allowed per year."
+    },
+    {
+      "question_id": "q_029",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2023",
+        "tesla_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "Based on the context provided, Tesla's approach to warranties on components it does not manufacture varies:\n\nFor components not manufactured by Tesla, the company \"generally passes through to our customers the applicable manufacturers' warranties, but may retain some warranty responsibilities for some or all of the life of such components\" [1].\n\nAdditionally, Tesla \"also provides certain warranties with respect to the energy generation and storage systems we sell, including on their installation and maintenance\" [1].\n\nSo to directly answer your question: Tesla does **not consistently provide its own warranty** on components it doesn't manufacture. Instead, it typically passes through the manufacturers' warranties to customers, though it **may retain some warranty responsibilities** for certain components or for portions of their lifespan [1]."
+    },
+    {
+      "question_id": "q_030",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.8220933543604226,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2024",
+        "google_2023"
+      ],
+      "generated_answer": "According to Tesla's 2024 10-K, no, the world cannot reduce carbon emissions by addressing only energy generation or only energy consumption.\n\nThe filing states: \"We believe the world cannot reduce carbon emissions without addressing both energy generation and consumption, and we are designing and manufacturing a complete energy and transportation ecosystem to achieve this goal.\" [2]\n\nThis indicates that Tesla views both energy generation AND consumption as necessary to address in order to reduce carbon emissions."
+    },
+    {
+      "question_id": "q_031",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9753315385795917,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2024",
+        "tesla_2024"
+      ],
+      "generated_answer": "According to the context, Tesla's automotive sales revenue **decreased by $6.03 billion, or 8%, in the year ended December 31, 2024 compared to the year ended December 31, 2023** [1]. This decrease was primarily due to lower average selling prices on vehicles driven by overall price reductions [1]."
+    },
+    {
+      "question_id": "q_032",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8934391039275442,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the SEC 10-K filings, NVIDIA uses the following social media channels for disclosing company information under Regulation FD [1][2]:\n\n1. X (formerly Twitter) - https://twitter.com/nvidia [2]\n2. NVIDIA Corporate Blog - http://blogs.nvidia.com [1][2]\n3. Facebook Page - https://www.facebook.com/nvidia [1][2]\n4. LinkedIn Page - http://www.linkedin.com/company/nvidia [1][2]\n5. Instagram Page - https://www.instagram.com/nvidia [1][2]\n6. YouTube - https://www.YouTube.com/nvidia [5]\n\nAccording to the filings, NVIDIA uses these social media channels \"as a means of disclosing information about the company, our products, our planned financial and other announcements and attendance at upcoming investor and industry conferences, and other matters and for complying with our disclosure obligations under Regulation FD\" [1][2][3][4]."
+    },
+    {
+      "question_id": "q_033",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9746741621248498,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "According to the context provided, NVIDIA's first data center CPU is called **Grace**, and it was introduced in **2023** [1].\n\nThe source states: \"In 2023, we introduced our first data center CPU, Grace, built for giant-scale AI and high-performance computing.\""
+    },
+    {
+      "question_id": "q_034",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 1.0,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8600395109302666,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the context provided, NVIDIA is headquartered in Santa Clara, California [2][3][4][5], and it was originally incorporated in California in April 1993 [2][3][5]."
+    },
+    {
+      "question_id": "q_035",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.8,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8888888888888888,
+      "answer_relevancy": 0.8433062382417619,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the SEC 10-K filings, NVIDIA's Graphics segment includes the following product categories [3]:\n\n1. **GeForce GPUs** for gaming and PCs\n2. **GeForce NOW** game streaming service and related infrastructure\n3. **Quadro/NVIDIA RTX GPUs** for enterprise workstation graphics\n4. **vGPU (Virtual GPU)** software for cloud-based visual and virtual computing\n5. **Automotive platforms** for infotainment systems\n6. **Omniverse Enterprise** software for building and operating metaverse and 3D internet applications\n\nNote: In the 2023 10-K, the Graphics segment also included cryptocurrency mining processors (CMP) [4], but this product category does not appear in the 2024 10-K listing [3]."
+    },
+    {
+      "question_id": "q_036",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided discusses NVIDIA's business operations, including their GPUs, data center systems, software platforms, and applications in industries like healthcare, financial services, and creative design. However, there is no mention of hair dryers or any consumer appliances in the provided excerpts from NVIDIA's 10-K filings."
+    },
+    {
+      "question_id": "q_037",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nWhile the context discusses various applications and markets for NVIDIA's GPUs (such as gaming, AI, data centers, professional design, healthcare, and financial services), it does not explicitly identify what the \"single most important growth factor\" has been for the company.\n\nAdditionally, regarding when NVIDIA started selling chips, the context only states that the company was \"incorporated in California in April 1993\" [1][2][4][5], but it does not provide information about when the company actually began selling its first chips or products."
+    },
+    {
+      "question_id": "q_038",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.9753741763935867,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the SEC 10-K filings, Nvidia engages with the following independent subcontractors and contract manufacturers for assembly, testing, and packaging of its final products:\n\n**From the 2024 10-K:** [1]\n- Hon Hai Precision Industry Co., Ltd.\n- Wistron Corporation\n- Fabrinet\n\n**From the 2023 10-K:** [3]\n- Amkor Technology\n- BYD Auto Co. Ltd. (BYD Auto)\n- Hon Hai Precision Industry Co. (Hon Hai)\n- King Yuan Electronics Co., Ltd.\n- Omni Logistics, LLC\n- Siliconware Precision Industries Company Ltd.\n- Wistron Corporation\n\nThe 2024 10-K specifically mentions three of these contractors, while the 2023 10-K provides a more comprehensive list of the subcontractors and contract manufacturers Nvidia utilizes for assembly, testing, and packaging services."
+    },
+    {
+      "question_id": "q_039",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nWhile the context [3] identifies NVIDIA's competitors in the GPU and accelerated computing space (AMD, Huawei, and Intel), it does not provide specific details about which of these competitors also compete in the networking products space. The context mentions that NVIDIA has networking products [2], but it does not explicitly state which competitors compete in both areas."
+    },
+    {
+      "question_id": "q_040",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.9612664027407267,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "No, NVIDIA does not consider its website and the information linked to it to be part of its Annual Report on Form 10-K. \n\nThis is explicitly stated in the filings: \"Our web site and the information on it or connected to it are not a part of this Annual Report on Form 10-K.\" [1] Additionally, the 2024 10-K reiterates that \"The contents of our website are not a part of this Annual Report on Form 10-K.\" [5]"
+    },
+    {
+      "question_id": "q_041",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the context provided, **no, Nvidia does not necessarily have the ability to reduce its supply commitments at the same rate if revenue declines.**\n\nBoth the 2023 and 2024 10-K filings explicitly state: \"We may not have the ability to reduce our supply commitments at the same rate or at all if our revenue declines.\" [1][2]\n\nThis limitation on reducing supply commitments is particularly relevant given that Nvidia has \"previously experienced extended lead times of more than 12 months\" and has \"paid premiums and provided deposits to secure future supply and capacity.\" [3]"
+    },
+    {
+      "question_id": "q_042",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.9,
+      "answer_relevancy": 0.8422858077297165,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "google_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the stock performance graph data from NVIDIA's 2024 10-K filing [4], here is how a $100 investment compared over the five-year period ending January 28, 2024:\n\n**NVIDIA Corporation:** $100 invested on 1/27/2019 grew to **$1,536.28** by 1/28/2024\n\n**S&P 500 Index:** $100 invested on 1/27/2019 grew to approximately **$175.25** by 1/28/2024 (based on the data shown)\n\n**Nasdaq 100 Index:** The complete value at 1/28/2024 is not fully visible in the provided context.\n\nNVIDIA's cumulative total shareholder return significantly outperformed the S&P 500 Index over this five-year period. While the S&P 500 returned approximately 75% on the $100 investment, NVIDIA returned approximately 1,436%, demonstrating substantially stronger performance than the broader market index [4].\n\nThe graph assumes reinvestment of dividends in each of the indices indicated, and total return is based on historical results and is not intended to indicate future performance [4]."
+    },
+    {
+      "question_id": "q_043",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "apple_2024",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the provided context, I can answer part of your question:\n\n**Revenue Growth:**\nAccording to the Compute & Networking segment data, Nvidia's total revenue grew by **681%** between fiscal year 2023 and 2024, increasing from $4,224 million to $32,972 million [5].\n\n**Gross Margin Change:**\nI don't have enough information in the provided context to answer the specific change in gross margin between fiscal years 2023 and 2024. While the context mentions that \"Gross margin increased in fiscal year 2024, primarily driven by Data Center revenue growth and lower net inventory provisions as a percentage\" [2], it does not provide the actual gross margin percentages or dollar amounts for both years needed to calculate the change."
+    },
+    {
+      "question_id": "q_044",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the provided context, I can tell you about Nvidia's gross margin changes, which is one aspect of cost structure:\n\nNvidia's **gross margin improved significantly** between fiscal year 2023 and fiscal year 2024. According to the context, gross margin increased from **56.9% in fiscal year 2023 to 72.7% in fiscal year 2024** [3]. This means that the cost of revenue as a percentage of revenue decreased.\n\nThe context indicates that this year-over-year increase in gross margin was \"primarily due to strong Data Center revenue\" [3].\n\nHowever, the context also notes that \"Operating expenses increased for fiscal year 2024, driven by growth in employees and compensation increases\" [2], though the specific operating expense figures as a percentage of revenue are not provided in this context.\n\nSo while I can confirm the gross margin improvement, I don't have enough information in the provided context to give you a complete picture of how Nvidia's total cost structure (including operating expenses) changed as a percentage of revenue between the two fiscal years."
+    },
+    {
+      "question_id": "q_045",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8754169004303213,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "amazon_2024",
+        "nvidia_2024",
+        "amazon_2023"
+      ],
+      "generated_answer": "According to Nvidia's debt maturity schedule as of January 28, 2024 [1]:\n\n- Debt due in one year: $1,250 million\n- Debt due in greater than ten years: $3,500 million\n\nThe amount of debt due in more than ten years ($3,500 million) is $2,250 million more than the amount due within one year ($1,250 million). In other words, Nvidia's long-term debt due in greater than ten years is 2.8 times larger than the debt due within one year."
+    },
+    {
+      "question_id": "q_046",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8392741384577384,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2024",
+        "apple_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "google_2024"
+      ],
+      "generated_answer": "Based on the provided context, as of the end of fiscal year 2024, Nvidia had **no commercial paper outstanding** [3][4].\n\nNvidia's commercial paper program has a maximum size of **$575 million** [3][4]."
+    },
+    {
+      "question_id": "q_047",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.9230769230769231,
+      "answer_relevancy": 0.8545176378381166,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "microsoft_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on NVIDIA's 10-K filings, here is how NVIDIA tests goodwill for impairment:\n\n**When the Test is Performed:**\nGoodwill is subject to an annual impairment test during the fourth quarter of NVIDIA's fiscal year, or earlier if indicators of potential impairment exist [1][2].\n\n**Type of Analysis Options:**\nNVIDIA performs either a qualitative or a quantitative analysis on a reporting unit basis [1][2].\n\n**Qualitative Analysis Factors:**\nQualitative factors include industry and market considerations, overall financial performance, and other relevant events and factors affecting the reporting units [1][2].\n\n**Quantitative Analysis Factors:**\nThe quantitative impairment test considers both the income approach and the market approach to estimate a reporting unit's fair value. The income and market valuation approaches consider factors that include, but are not limited to:\n- Prospective financial information\n- Growth rates\n- Residual values\n- Discount rates\n- Comparable multiples from publicly traded companies [5]"
+    },
+    {
+      "question_id": "q_048",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.9230769230769231,
+      "answer_relevancy": 0.9154634299089174,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "According to Nvidia's 2023 10-K, the demographic groups specifically identified as historically underrepresented in the technology field and prioritized in recruiting, developing, and retaining talent are:\n\n1. Women\n2. Black/African American candidates\n3. Hispanic/Latino candidates\n\nThe filing states that \"When recruiting for new talent or developing our current employees, we strive to build a diverse talent pipeline that includes those underrepresented in the technology field, including women, Black/African American, and Hispanic/Latino candidates.\" [5]\n\nTo support this focus, Nvidia has implemented several initiatives, including partnering with institutions and professional organizations serving historically underrepresented communities and assigning dedicated recruiting teams to shepherd underrepresented candidates through the interview process. [5]"
+    },
+    {
+      "question_id": "q_049",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.9931000140840832,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "costco_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the provided context, Nvidia's workforce gender composition changed as follows between the end of fiscal year 2023 and the end of fiscal year 2024:\n\n**Fiscal Year 2023** [5]:\n- Male: 80%\n- Female: 19%\n- Not declared: 1%\n\n**Fiscal Year 2024** [3]:\n- Male: 79%\n- Female: 20%\n- Not declared: 1%\n\nThe composition shifted slightly, with the male percentage decreasing by 1 percentage point (from 80% to 79%) and the female percentage increasing by 1 percentage point (from 19% to 20%), while the \"not declared\" category remained unchanged at 1%."
+    },
+    {
+      "question_id": "q_050",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9175687972183866,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "Based on the provided context, before co-founding NVIDIA in 1993, Jensen Huang was employed at two companies:\n\n1. **LSI Logic Corporation (1985-1993)** [1][2]: A computer chip manufacturer where he held a variety of positions, including Director of Coreware, the business unit responsible for LSI's SOC (System-on-Chip).\n\n2. **AMD (1983-1985)** [2]: He served as a microprocessor designer at this semiconductor company."
+    },
+    {
+      "question_id": "q_051",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9136383711636243,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "According to the context, Nvidia's sales to China as a percentage of total Data Center revenue decreased from 19% in fiscal year 2023 to 14% in fiscal year 2024 [1][3]."
+    },
+    {
+      "question_id": "q_052",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7965179509336457,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "According to NVIDIA's 2024 10-K filing, NVIDIA has approximately 3,700 employees in the Israel region who primarily support the research and development, operations, and sales and marketing of the company's networking products [1][3]."
+    },
+    {
+      "question_id": "q_053",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context mentions that export controls impact NVIDIA's ability to sell certain chips to Russia [4], but it does not explicitly state whether NVIDIA currently makes direct sales to Russia or not. The reference to licensing requirements and restrictions on exports to Russia indicates there are limitations on what can be sold there, but this doesn't clarify whether any direct sales are currently occurring."
+    },
+    {
+      "question_id": "q_054",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9266682997915722,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2024",
+        "netflix_2024",
+        "google_2024",
+        "amazon_2024",
+        "tesla_2024"
+      ],
+      "generated_answer": "According to Apple's 2024 10-K filing, the aggregate market value of the voting and non-voting stock held by non-affiliates of the Registrant as of March 29, 2024, the last business day of the Registrant's most recently completed second fiscal quarter, was approximately $2,628,553,000,000 (or approximately $2.63 trillion) [1]."
+    },
+    {
+      "question_id": "q_055",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024",
+        "nvidia_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided contains only NVIDIA's fiscal 2024 10-K filing information, which shows NVIDIA's total revenue was $60,922 million [4][5]. However, there is no information about Apple's fiscal 2024 revenue in the provided context, so I cannot make a comparison between the two companies."
+    },
+    {
+      "question_id": "q_056",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.8666666666666667,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2024",
+        "apple_2024",
+        "microsoft_2024",
+        "nvidia_2024",
+        "costco_2024"
+      ],
+      "generated_answer": "Based on the context provided, I can identify the following changes in Apple's product and service categories from fiscal 2023 to fiscal 2024:\n\n**Most Growth:** Services grew the most, as Services net sales increased during 2024 compared to 2023 due primarily to higher net sales from advertising, the App Store, and cloud services [1].\n\n**Most Decline:** iPad declined the most, as iPad net sales decreased during 2024 compared to 2023 due primarily to lower net sales of iPad Pro and the entry-level iPad models, partially offset by higher net sales of iPad Air [1].\n\nHowever, I should note that the context does not provide specific percentage or dollar amount comparisons that would allow me to definitively rank which category had the largest percentage decline or to compare the magnitude of the Services growth against other categories' changes. The context only indicates directional changes for most categories."
+    },
+    {
+      "question_id": "q_057",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.3333333333333333,
+      "answer_relevancy": 0.9351342059278397,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "apple_2024",
+        "apple_2023",
+        "apple_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "Based on the context provided, the European Commission ordered Ireland to recover **\u20ac13.1 billion in additional taxes, plus interest of \u20ac1.2 billion** from Apple under the 2016 State Aid Decision [3].\n\nThis recovery was calculated for the period from June 2003 through December 2014 [3][5]."
+    },
+    {
+      "question_id": "q_058",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "apple_2023",
+        "apple_2024",
+        "apple_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "Based on the provided context:\n\n**What is Apple's 2022 Employee Stock Plan:**\nThe Apple Inc. 2022 Employee Stock Plan (the \"2022 Plan\") is a shareholder-approved plan that was approved on March 4, 2022. A maximum of approximately 1.3 billion shares were authorized for issuance pursuant to 2022 Plan awards at the time of approval [4].\n\n**Types of Equity Awards:**\nThe 2022 Plan permits the granting of the following types of equity awards [1]:\n- RSUs (Restricted Stock Units)\n- Stock grants\n- Performance-based awards\n- Stock options\n- Stock appreciation rights\n\nThe plan provides for broad-based equity grants to employees, including executive officers [1].\n\n**RSU Vesting Schedule:**\nI don't have enough information in the provided context to answer the question about the typical RSU vesting schedule. The context indicates that \"RSUs granted under the 2022 Plan generally vest over\" [1], but the sentence is incomplete and does not provide the specific vesting timeline."
+    },
+    {
+      "question_id": "q_059",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9462486778030915,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2024",
+        "nvidia_2023",
+        "microsoft_2023",
+        "apple_2023",
+        "apple_2023"
+      ],
+      "generated_answer": "Based on the provided context, Apple's primary customers include [1]:\n\n**Customer Segments:**\n- Consumer\n- Small and mid-sized business\n- Education\n- Enterprise\n- Government markets\n\n**Sales Channels:**\n\nApple employs both direct and indirect distribution channels [4]:\n\n**Direct Channels (37% of net sales in 2023):**\n- Retail stores\n- Online stores\n- Direct sales force\n\n**Indirect Channels (63% of net sales in 2023):**\n- Third-party cellular network carriers\n- Wholesalers\n- Retailers\n- Resellers\n\nThe company sells its own products and resells third-party products in most of its major markets through these various distribution channels [1][4]."
+    },
+    {
+      "question_id": "q_060",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "apple_2024",
+        "apple_2024",
+        "nvidia_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "According to Apple's 2023 10-K, investors should not rely on Apple's past financial performance or historical trends to anticipate future results. \n\nThe filing explicitly states: \"past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods.\" [1]"
+    },
+    {
+      "question_id": "q_061",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.927193974506468,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "apple_2024",
+        "apple_2023",
+        "apple_2024",
+        "apple_2023"
+      ],
+      "generated_answer": "According to Apple's 2023 10-K, the five-year cumulative total shareholder return on $100 invested in Apple common stock evolved as follows from September 2018 to September 2023 [1]:\n\n- September 2018: $100\n- September 2019: $98\n- September 2020: $204\n- September 2021: $269\n- September 2022: $277\n- September 2023: $31\n\nThis data shows that the initial $100 investment initially declined to $98 in September 2019, then more than doubled to $204 by September 2020. The investment continued to grow to $269 by September 2021 and reached $277 by September 2022. However, there was a significant decline to $31 by September 2023 [1]."
+    },
+    {
+      "question_id": "q_062",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2023",
+        "nvidia_2023",
+        "apple_2023",
+        "nvidia_2023",
+        "nvidia_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided from Apple's 2023 10-K discusses overall net sales decreases and breakdowns by product category (Mac, iPhone, Services, Wearables, Home and Accessories), but it does not contain specific information about Apple's Americas segment net sales or reasons for any changes in that geographic region."
+    },
+    {
+      "question_id": "q_063",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.999999648784884,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "apple_2024",
+        "apple_2023",
+        "apple_2024",
+        "apple_2024",
+        "apple_2024"
+      ],
+      "generated_answer": "No, Apple does not account for the sale of components to its manufacturing vendors as revenue in product net sales. According to the 2024 10-K:\n\n\"The Company does not reflect the sale of these components in products net sales. Rather, the Company recognizes any gain on these sales as a reduction of products cost of sales when the related final products are sold by the Company.\" [4]"
+    },
+    {
+      "question_id": "q_064",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.8,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9229886915465578,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2024",
+        "microsoft_2023"
+      ],
+      "generated_answer": "According to the context, Microsoft's cloud business benefits from three economies of scale [1][2][4]:\n\n1. **Datacenters that deploy computational resources at significantly lower cost per unit than smaller ones** [1][2][4]\n\n2. **Datacenters that coordinate and aggregate diverse customer, geographic, and application demand patterns, improving the utilization of computing, storage, and network resources** [1][2][4]\n\n3. **Multi-tenancy locations that lower application maintenance labor costs** [3][4]"
+    },
+    {
+      "question_id": "q_065",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.4077521096516256,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "microsoft_2024",
+        "google_2024",
+        "microsoft_2023",
+        "microsoft_2023"
+      ],
+      "generated_answer": "According to the provided context, Microsoft describes **GitHub Copilot** as being at the forefront of AI-powered software development. \n\nThe 2023 10-K states: \"GitHub Copilot is at the forefront of AI-powered software development, giving developers a new tool to write code easier and faster so they can focus on more creative problem-solving.\" [1] This description is repeated in the 2024 10-K as well. [2]"
+    },
+    {
+      "question_id": "q_066",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": 0.8584273011649769,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2023",
+        "microsoft_2024"
+      ],
+      "generated_answer": "Based on the context provided:\n\n**When Activision Blizzard joined Microsoft:**\nActivision Blizzard joined Microsoft on October 13, 2023, when Microsoft completed its acquisition for a total purchase price of $75.4 billion [2].\n\n**Activision Blizzard's business:**\nActivision Blizzard is a leader in game development and an interactive entertainment content publisher [2]. The acquisition was intended to accelerate the growth in Microsoft's gaming business across mobile, PC, console, and cloud gaming [2]."
+    },
+    {
+      "question_id": "q_067",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.9500338428878213,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2023",
+        "microsoft_2024"
+      ],
+      "generated_answer": "Yes, Microsoft achieved its goal of training and certifying 10 million learners by 2025. According to the 2024 10-K filing, \"As of May 2024, we have surpassed that goal, training and certifying 12.6 million learners.\" [1]"
+    },
+    {
+      "question_id": "q_068",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8571428571428571,
+      "answer_relevancy": 0.7804113312576226,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2024",
+        "costco_2024",
+        "microsoft_2023",
+        "microsoft_2023"
+      ],
+      "generated_answer": "Based on Microsoft's 2024 10-K filing, as of June 30, 2024 [2]:\n\n**Total Full-Time Employment:** Approximately 228,000 people\n\n**Geographic Distribution:** [2]\n- United States: 126,000\n- International: 102,000\n\n**Headcount Breakdown by Function:** [2]\n- Operations (including product support, consulting services, datacenter operations, and manufacturing and distribution): 86,000\n- Product Research and Development: 81,000\n- Sales and Marketing: 45,000\n- General and Administration: 16,000"
+    },
+    {
+      "question_id": "q_069",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8794475802872933,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2024",
+        "apple_2023",
+        "microsoft_2024"
+      ],
+      "generated_answer": "According to Microsoft's 2024 10-K filing, the growth of the Gaming business through Xbox-enabled content is determined by the following factors [1]:\n\n1. The overall active user base through Xbox enabled content\n2. Availability of games\n3. Providing exclusive game content that gamers seek\n4. The computational power and reliability of the devices used to access content and services\n5. The ability to create new experiences\n\nAdditionally, Microsoft notes that they are identifying new opportunities to attract gamers across different end points through first- and third-party content and business diversification across subscriptions, ads, and digital stores [5]."
+    },
+    {
+      "question_id": "q_070",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.8873899563296167,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2024",
+        "nvidia_2024",
+        "microsoft_2024"
+      ],
+      "generated_answer": "According to Microsoft's 2024 10-K, Judson B. Althoff serves as Microsoft's Chief Commercial Officer (with the title Executive Vice President and Chief Commercial Officer), and he is 51 years old [1]."
+    },
+    {
+      "question_id": "q_071",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": 0.7821104263228899,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2023",
+        "nvidia_2024"
+      ],
+      "generated_answer": "According to the Microsoft 2024 10-K, the actions Microsoft states it may take to resolve third-party intellectual property infringement claims, including those arising from AI training and output, are [1]:\n\n1. **Enter into royalty-bearing data access or licensing agreements** on terms that may be less favorable than currently available\n2. **Stop selling affected products or services**\n3. **Redesign affected products or services**\n\nThese measures are described as potential resolutions to claims of intellectual property infringement, including current copyright infringement and other claims arising from AI training and output [1]."
+    },
+    {
+      "question_id": "q_072",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7248140800769814,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "microsoft_2024",
+        "amazon_2023",
+        "amazon_2024",
+        "microsoft_2023"
+      ],
+      "generated_answer": "Based on the provided context, here is the information about Microsoft's common stock:\n\n**Exchange:** NASDAQ Stock Market [1]\n\n**Symbol:** MSFT [1]\n\n**Registered Holders of Record (as of July 25, 2024):** 81,346 [1]"
+    },
+    {
+      "question_id": "q_073",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "microsoft_2023",
+        "microsoft_2024",
+        "netflix_2024",
+        "microsoft_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided from Microsoft's 10-K filings discusses Xbox hardware revenue, content and services, business strategies, and growth factors, but it does not contain demographic information about Xbox players and purchasers such as age, gender, or income breakdown."
+    },
+    {
+      "question_id": "q_074",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8663535337375688,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2024",
+        "apple_2024",
+        "microsoft_2023",
+        "apple_2023",
+        "microsoft_2024"
+      ],
+      "generated_answer": "According to Microsoft's debt investment maturity schedule as of June 30, 2024, the combined adjusted cost basis and estimated fair value for debt investments maturing after five years were:\n\n**Adjusted Cost Basis:** $9,440 million ($8,028 million + $1,412 million)\n\n**Estimated Fair Value:** $8,524 million ($7,242 million + $1,282 million)\n\nThis combines the \"Due after five years through 10 years\" bucket and the \"Due after 10 years\" bucket from the maturity table [1]."
+    },
+    {
+      "question_id": "q_075",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.8,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9041687055898963,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2023",
+        "google_2024",
+        "google_2024",
+        "google_2024"
+      ],
+      "generated_answer": "Based on the provided context, the two reportable segments of Google within Alphabet are [1][2][3][4]:\n\n1. **Google Services**\n2. **Google Cloud**\n\nNon-Google businesses are reported collectively as **Other Bets** [1][2][3][4].\n\nAs stated in the context, \"Alphabet is a collection of businesses \u2014 the largest of which is Google. We report Google in two segments, Google Services and Google Cloud, and all non-Google businesses collectively as Other Bets.\" [3]"
+    },
+    {
+      "question_id": "q_076",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.5360760291797629,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2024",
+        "google_2023",
+        "google_2024",
+        "google_2023"
+      ],
+      "generated_answer": "According to the context, **AlphaFold** is the Google DeepMind system that solved the 50-year-old protein folding challenge, and this was accomplished in **2020** [1][2].\n\nAdditionally, the context notes that in 2024, Google introduced **AlphaFold 3**, which was built on the previous models to predict the structure and interactions of all the molecules in life's processes [2]."
+    },
+    {
+      "question_id": "q_077",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "microsoft_2023",
+        "microsoft_2024",
+        "google_2023",
+        "google_2023"
+      ],
+      "generated_answer": "Based on the provided context, I can only offer a partial comparison:\n\n**Microsoft's Climate Commitment:**\nMicrosoft committed in 2020 to being a carbon negative, water positive, and zero waste company by 2030 [3].\n\n**Google's Climate Commitment:**\nThe context indicates that Google has been \"a leader on sustainability and climate change since Google's founding more than 25 years ago\" and that sustainability is \"one of our core values at Google\" [4]. However, the specific operational sustainability targets and target year for Google are not detailed in the provided context.\n\nI don't have enough information in the provided context to provide a complete comparison of Google's specific climate commitments and target year with Microsoft's 2030 goals."
+    },
+    {
+      "question_id": "q_078",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2023",
+        "google_2024",
+        "google_2024",
+        "google_2024"
+      ],
+      "generated_answer": "Based on the provided context, Google identifies the following risk related to its \"Google\" trademark:\n\n**The Risk:** There is a risk that the word \"Google\" could become so commonly used that it becomes synonymous with the word \"search.\" While some courts have ruled that \"Google\" is a protectable trademark, it is possible that other courts, particularly those outside of the U.S., may reach a different determination. [2][3]\n\n**The Potential Consequence:** If this happens, Google could lose protection for the \"Google\" trademark, which could result in other people using the word \"Google\" to refer to their own products, thus diminishing Google's brand. [2][3]\n\nThe context indicates that any significant impairment of Google's intellectual property rights could harm the company's business and its ability to compete. [2][3]"
+    },
+    {
+      "question_id": "q_079",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.8333333333333334,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2024",
+        "apple_2023",
+        "apple_2024",
+        "apple_2023"
+      ],
+      "generated_answer": "No. According to the context from Google's 10-K filings, Alphabet (Google) explicitly states that it may NOT have adequate patent or copyright protection for certain innovations. Specifically, the 2024 10-K states: \"Moreover, we may not have adequate patent or copyright protection for certain innovations that later turn out to be important.\" [2]\n\nAdditionally, Google acknowledges that \"it is possible we may not be able to protect some of these innovations\" and that \"there is always the possibility that the scope of the protection gained will be insufficient or that an issued patent may be deemed invalid or unenforceable.\" [2]"
+    },
+    {
+      "question_id": "q_080",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.4,
+      "answer_relevancy": 0.954023160337013,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2024",
+        "google_2024",
+        "nvidia_2023",
+        "google_2023"
+      ],
+      "generated_answer": "No, Google does not state that it can identify and resolve all AI-related ethical issues, deficiencies, and failures before they arise. \n\nIn fact, Google explicitly states the opposite. According to their 2024 10-K filing: \"we may not be able to identify or resolve all AI-related issues, deficiencies, and/or failures before they arise\" [2]. This same language also appears in their 2023 10-K filing [1].\n\nGoogle acknowledges that despite investing significant resources to develop, test, and maintain their products and services to implement AI responsibly, they may still be unable to identify or resolve all such issues before they occur [3]."
+    },
+    {
+      "question_id": "q_081",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.6666666666666666,
+      "answer_relevancy": 0.8526505181164682,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2023",
+        "google_2023",
+        "google_2024",
+        "google_2023",
+        "google_2024"
+      ],
+      "generated_answer": "Based on the provided context, I can track YouTube ads revenue changes as follows:\n\n**2022 to 2023:** YouTube ads revenues increased $2.3 billion [1][2]\n\n**2023 to 2024:** YouTube ads revenues increased $4.6 billion [3]\n\n**Total growth from 2022 to 2024:** $6.9 billion ($2.3 billion + $4.6 billion)\n\nThe growth in both periods was driven by increased advertiser spending on brand and direct response advertising products [1][3]."
+    },
+    {
+      "question_id": "q_082",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "google_2024",
+        "google_2023",
+        "google_2024",
+        "google_2024",
+        "google_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context discusses Google's Gemini model capabilities, features, and deployment across various products and services, but it does not contain any information about the costs associated with training the Gemini model."
+    },
+    {
+      "question_id": "q_083",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "microsoft_2023",
+        "microsoft_2023",
+        "microsoft_2024",
+        "microsoft_2023",
+        "microsoft_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context mentions that Microsoft has a long-term strategic partnership with OpenAI [4] and announced the third phase of this partnership in January 2023 [1][5], but it does not contain any information about the annual payment amount Microsoft makes to OpenAI under their partnership agreement."
+    },
+    {
+      "question_id": "q_084",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "netflix_2024",
+        "netflix_2024",
+        "netflix_2023",
+        "netflix_2024",
+        "netflix_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context contains Netflix's financial and membership data from their 10-K filings, including information about paid memberships, revenue per membership, and operating metrics. However, there is no data provided about average monthly viewing hours per subscriber."
+    },
+    {
+      "question_id": "q_085",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "amazon_2024",
+        "amazon_2024",
+        "amazon_2024",
+        "amazon_2024",
+        "amazon_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided from Amazon's 2024 10-K filing discusses video and music content expenses, net sales by segment, executive stock trading plans, sales and marketing costs, and business acquisitions. However, it does not contain any information about Prime Air drone deliveries in 2024."
+    },
+    {
+      "question_id": "q_086",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "nvidia_2023",
+        "nvidia_2023",
+        "nvidia_2023",
+        "apple_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provides information about NVIDIA's overall workforce composition [3], showing that about 80% of the workforce is technical and about 50% hold advanced degrees. It also shows R&D expenses as a percentage of revenue [5]. However, there is no specific information about R&D headcount in Shanghai or any other specific geographic location."
+    },
+    {
+      "question_id": "q_087",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "nvidia_2024",
+        "nvidia_2024",
+        "apple_2024",
+        "microsoft_2023",
+        "tesla_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided includes information about Microsoft's earnings per share methodology from their 2023 10-K [4], but does not include the actual basic EPS figures for Microsoft in fiscal 2024. Additionally, there is no information about Netflix or their earnings per share data in any of the provided sources.\n\nTo answer this question, I would need the specific basic EPS figures for both Microsoft and Netflix for fiscal 2024 and the prior two fiscal years from their respective 10-K filings."
+    },
+    {
+      "question_id": "q_088",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "netflix_2024",
+        "netflix_2024",
+        "amazon_2023",
+        "netflix_2023",
+        "costco_2023"
+      ],
+      "generated_answer": "Based on the provided context, I can answer part of your question:\n\n**Netflix's Primary Source of Revenue:**\nNetflix's primary source of revenues is from monthly membership fees [2]. The company bills members in advance of the start of their monthly membership, and revenues are recognized ratably over each membership period [2]. Additionally, Netflix earns revenue from advertisements presented on its streaming service, consumer products, and live events [1].\n\n**Number of Operating Segments:**\nI don't have enough information in the provided context to answer how many operating segments Netflix reports. The context provided includes information about Costco's segments [5] and Amazon's revenue overview [3], but does not contain Netflix's segment reporting information."
+    },
+    {
+      "question_id": "q_089",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9234850122576085,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "netflix_2024",
+        "nvidia_2024",
+        "microsoft_2024",
+        "netflix_2024",
+        "microsoft_2024"
+      ],
+      "generated_answer": "Based on the context provided, Netflix's streaming revenue in fiscal year 2024 was $39,000,966 thousand (or approximately $39 billion), and it grew 16% compared to fiscal year 2023 [1][4].\n\nThe context notes that this growth was \"primarily due to the growth in average paying memberships and price increases, partially offset by unfavorable changes in foreign exchange rates\" [1]."
+    },
+    {
+      "question_id": "q_090",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.8323701037696848,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "netflix_2024",
+        "nvidia_2024",
+        "nvidia_2023",
+        "google_2024",
+        "nvidia_2023"
+      ],
+      "generated_answer": "Based on the provided context, at Netflix, the Chief Operating Decision Maker (CODM) is identified as the company's **co-chief executive officers** [1].\n\nThe financial metrics they use to assess performance are **consolidated operating margin and net income** [1]."
+    },
+    {
+      "question_id": "q_091",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.6,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.75,
+      "answer_relevancy": 0.8039398817316998,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2023",
+        "costco_2024",
+        "costco_2024",
+        "costco_2023"
+      ],
+      "generated_answer": "Based on the provided context, Costco Travel offers its travel services exclusively to **Costco members** in the U.S. and U.K., not to all citizens [1][2].\n\nThe context specifically states: \"Costco Travel offers vacation packages, car rentals, cruises and other travel products exclusively for Costco members (offered in the U.S., Canada, and the U.K.).\""
+    },
+    {
+      "question_id": "q_092",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.7318220585875568,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2024",
+        "costco_2024",
+        "costco_2024",
+        "microsoft_2024"
+      ],
+      "generated_answer": "Based on the context provided, Gary Millerchip previously served as Senior Vice President and Chief Financial Officer of The Kroger Co. from April 2019 to February 2024 and, prior to that, as Chief Executive Officer of Kroger Personal Finance since July 2010. [1]"
+    },
+    {
+      "question_id": "q_093",
+      "category": "numerical",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 0.25,
+      "answer_relevancy": 0.8673422833244552,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2023",
+        "costco_2024",
+        "costco_2024",
+        "costco_2023"
+      ],
+      "generated_answer": "Based on the provided context:\n\nAs of September 1, 2024 (the end of fiscal 2024), Costco has **134 land-only leases where Costco owns the building** [1], and **187 total leases** [1].\n\nTo clarify what this means: In these 134 land-only leases, Costco owns the building but leases the land from another party."
+    },
+    {
+      "question_id": "q_094",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.875,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2024",
+        "costco_2023",
+        "costco_2023",
+        "costco_2024"
+      ],
+      "generated_answer": "Based on the provided context:\n\n**Fiscal Year 2023:** Costco opened 26 new warehouses, including three relocations [4].\n\n**Fiscal Year 2024:** Costco opened 30 new warehouses, including one relocation [2].\n\n**Geographic Breakdown:**\n\nFor fiscal year 2024, the breakdown was [2]:\n- 23 net new in the U.S.\n- 1 new in the Canadian segment\n- 5 new in the Other International segment\n\nFor fiscal year 2023, I don't have enough information in the provided context to answer the specific geographic breakdown of where the 26 new warehouses were opened."
+    },
+    {
+      "question_id": "q_095",
+      "category": "negation",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.2,
+      "citation_accuracy": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.9710553353115866,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2023",
+        "costco_2023",
+        "costco_2024",
+        "costco_2024"
+      ],
+      "generated_answer": "Based on the provided context, Costco Executive members do not receive cashback as a cash payout. Instead, they receive their rewards in a different form.\n\nAccording to the 2024 10-K, \"Executive members earn a 2% reward on qualified purchases (generally up to a maximum reward of $1,000 per year), redeemable at Costco warehouses\" [1]. The context further clarifies that these rewards are issued as \"Executive member 2% reward certificates\" [2] that are \"redeemable at Costco warehouses\" [1].\n\nSo the rewards are provided as certificates or credits that can only be used for purchases at Costco warehouses, rather than as direct cash payouts."
+    },
+    {
+      "question_id": "q_096",
+      "category": "comparison",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.42857142857142855,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "tesla_2023",
+        "nvidia_2023",
+        "tesla_2024",
+        "apple_2023",
+        "amazon_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question. The context provided contains information about stock-based compensation expense and income tax benefits for Tesla, Nvidia, Apple, and Amazon, but does not include any information about Costco's stock-based compensation expense or recognized income tax benefits."
+    },
+    {
+      "question_id": "q_097",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "costco_2024",
+        "costco_2023",
+        "costco_2023",
+        "costco_2024",
+        "costco_2023"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context discusses Kirkland Signature as Costco's private-label brand and mentions that these products [1][4]:\n- Are offered at prices generally lower than national brands\n- Help lower costs and differentiate merchandise offerings\n- Generally earn higher margins than national brand products\n- Represent a growing portion of overall sales\n\nHowever, the provided excerpts do not contain specific annual revenue figures or dollar amounts for Kirkland Signature products."
+    },
+    {
+      "question_id": "q_098",
+      "category": "unanswerable",
+      "answerable": false,
+      "recall_at_5": null,
+      "precision_at_5": null,
+      "citation_accuracy": null,
+      "faithfulness": null,
+      "answer_relevancy": null,
+      "refusal_accuracy": 1.0,
+      "retrieved_company_year": [
+        "costco_2023",
+        "costco_2024",
+        "costco_2024",
+        "costco_2023",
+        "costco_2024"
+      ],
+      "generated_answer": "I don't have enough information in the provided context to answer this question.\n\nThe context provided discusses Costco's membership programs, warehouse openings, business centers, and Costco Travel services, but it does not contain any information about revenue from the sale of Apple products or any other specific product categories."
+    },
+    {
+      "question_id": "q_099",
+      "category": "multi_hop",
+      "answerable": true,
+      "recall_at_5": 0.0,
+      "precision_at_5": 0.0,
+      "citation_accuracy": 0.0,
+      "faithfulness": 0.7142857142857143,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "google_2024",
+        "netflix_2024",
+        "google_2024",
+        "google_2023",
+        "netflix_2024"
+      ],
+      "generated_answer": "Based on the provided context, I don't have enough information to make this comparison.\n\nThe context shows that [1] Google's YouTube ads revenues increased $4.6 billion from 2023 to 2024, but this figure represents only the *change* in revenue, not the total YouTube ads revenue for 2024.\n\nFor Netflix, [2] shows that streaming revenues for 2024 were $39,000,966 (in thousands, so approximately $39 billion), but this represents Netflix's total streaming revenue, not a comparable metric to Google's YouTube ads revenue specifically.\n\nTo answer your question accurately, I would need the total YouTube ads revenue figure for Google in fiscal 2024, which is not provided in the context."
+    },
+    {
+      "question_id": "q_100",
+      "category": "factual",
+      "answerable": true,
+      "recall_at_5": 1.0,
+      "precision_at_5": 0.4,
+      "citation_accuracy": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0,
+      "refusal_accuracy": null,
+      "retrieved_company_year": [
+        "costco_2023",
+        "costco_2023",
+        "costco_2023",
+        "costco_2023",
+        "costco_2023"
+      ],
+      "generated_answer": "Based on the provided context, I don't have enough information to provide a complete answer about the key legal allegations in the Rodriguez v. Costco Wholesale Corp. case.\n\nThe context [2] indicates that Rodriguez v. Costco Wholesale Corp. (Case No. 22CV012847; Alameda Superior Court) involves claims under California Labor Code, and the document mentions that \"The Company filed an answer denying the material allegations of the complaint.\" However, the specific allegations are not fully detailed in the excerpt provided.\n\nThe context does show that the relief being sought includes \"civil penalties and attorneys' fees\" under the California Labor Code [2], but the specific nature of the labor code violations alleged is not clearly stated in the available context."
+    }
+  ]
+}

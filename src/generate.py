@@ -63,16 +63,21 @@ Answer:"""
 # Generation
 # ---------------------------------------------------------------------------
 
-def answer_question(query: str, top_k: int = 5) -> dict:
+def answer_question(query: str, top_k: int = 5, retriever=None) -> dict:
     """
     End-to-end: retrieve relevant chunks, ask Claude, return answer + sources.
+
+    Pass retriever=retrieve_bm25 (or any function with the same signature)
+    to swap in a different retrieval backend. Defaults to dense vector.
 
     Returns a dict with:
         answer: the model's response text
         sources: list of retrieved chunks (for citation display)
         model: the model used
     """
-    chunks = retrieve(query, top_k=top_k)
+    if retriever is None:
+        retriever = retrieve
+    chunks = retriever(query, top_k)
 
     if not chunks:
         return {
