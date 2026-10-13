@@ -24,6 +24,7 @@ from pydantic import BaseModel, Field
 
 from src.generate import answer_question
 from src.retrieve_hybrid import retrieve_hybrid
+from src.cache import get_cached, set_cached, cache_stats, clear_cache
 
 load_dotenv()
 
@@ -66,6 +67,8 @@ class QueryResponse(BaseModel):
     sources: list[SourceChunk]
     model: str
     latency_ms: int
+    cache_hit: bool
+    matched_query: str | None = None
 
 
 class HealthResponse(BaseModel):
@@ -132,11 +135,24 @@ def ready():
 @app.post("/query", response_model=QueryResponse)
 def query(req: QueryRequest):
     """
-    Run a question through the hybrid retrieve + generate pipeline.
-    Returns the generated answer, the source chunks it was grounded in,
-    and total latency.
+    Run a question through hybrid retrieve + generate, with semantic caching.
+    Checks the semantic cache first; on a hit, returns the cached response.
+    On a miss, runs the full pipeline and caches the result.
     """
     start = time.time()
+
+    # Check cache first
+    cached = get_cached(req.question)
+    if cached is not None:
+        latency_ms = int((time.time() - start) * 1000)
+        return {
+            **cached["response"],
+            "latency_ms": latency_ms,
+            "cache_hit": True,
+            "matched_query": cached["matched_query"],
+        }
+
+    # Miss: run full pipeline
     try:
         result = answer_question(
             req.question,
@@ -146,11 +162,29 @@ def query(req: QueryRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Pipeline error: {type(e).__name__}: {e}")
 
-    latency_ms = int((time.time() - start) * 1000)
-
-    return {
+    response = {
         "answer": result["answer"],
         "sources": result["sources"],
         "model": result["model"],
-        "latency_ms": latency_ms,
     }
+
+    # Cache for next time
+    try:
+        set_cached(req.question, response)
+    except Exception as e:
+        # Cache failures should never break the request
+        print(f"Warning: failed to cache response: {e}")
+
+    latency_ms = int((time.time() - start) * 1000)
+    return {**response, "latency_ms": latency_ms, "cache_hit": False, "matched_query": None}
+@app.get("/cache/stats")
+def get_cache_stats():
+    """Return current cache size and configuration."""
+    return cache_stats()
+
+
+@app.delete("/cache")
+def clear_cache_endpoint():
+    """Clear all cached entries."""
+    cleared = clear_cache()
+    return {"cleared": cleared}
