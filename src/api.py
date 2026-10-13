@@ -26,6 +26,14 @@ from src.generate import answer_question
 from src.retrieve_hybrid import retrieve_hybrid
 from src.cache import get_cached, set_cached, cache_stats, clear_cache
 
+from fastapi.responses import Response
+from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+
+from src.observability import (
+    QUERIES_TOTAL, QUERY_LATENCY_MS, CACHE_SIZE, ERRORS_TOTAL,
+    log, trace_request,
+)
+
 load_dotenv()
 
 # ---------------------------------------------------------------------------
@@ -69,6 +77,8 @@ class QueryResponse(BaseModel):
     latency_ms: int
     cache_hit: bool
     matched_query: str | None = None
+    provider: str | None = None
+    fallback_used: bool | None = None
 
 
 class HealthResponse(BaseModel):
@@ -133,50 +143,78 @@ def ready():
 
 
 @app.post("/query", response_model=QueryResponse)
+@app.post("/query", response_model=QueryResponse)
 def query(req: QueryRequest):
     """
-    Run a question through hybrid retrieve + generate, with semantic caching.
-    Checks the semantic cache first; on a hit, returns the cached response.
-    On a miss, runs the full pipeline and caches the result.
+    Run a question through hybrid retrieve + generate, with cache check.
+    Records Prometheus metrics and structured logs for every request.
     """
-    start = time.time()
+    with trace_request("/query") as trace_id:
+        start = time.time()
 
-    # Check cache first
-    cached = get_cached(req.question)
-    if cached is not None:
-        latency_ms = int((time.time() - start) * 1000)
-        return {
-            **cached["response"],
-            "latency_ms": latency_ms,
-            "cache_hit": True,
-            "matched_query": cached["matched_query"],
+        # Cache check
+        cached = get_cached(req.question)
+        if cached is not None:
+            latency_ms = int((time.time() - start) * 1000)
+            cached_provider = cached["response"].get("provider") or "unknown"
+            cached_fallback = str(cached["response"].get("fallback_used", False)).lower()
+
+            QUERIES_TOTAL.labels(cache_hit="true", provider=cached_provider, fallback_used=cached_fallback).inc()
+            QUERY_LATENCY_MS.labels(cache_hit="true").observe(latency_ms)
+            log.info("query_served", extra={
+                "trace_id": trace_id,
+                "cache_hit": True,
+                "matched_query": cached["matched_query"],
+                "similarity": cached["similarity"],
+                "latency_ms": latency_ms,
+            })
+            return {
+                **cached["response"],
+                "latency_ms": latency_ms,
+                "cache_hit": True,
+                "matched_query": cached["matched_query"],
+            }
+
+        # Cache miss: run pipeline
+        try:
+            result = answer_question(req.question, top_k=req.top_k, retriever=retrieve_hybrid)
+        except Exception as e:
+            ERRORS_TOTAL.labels(error_type=type(e).__name__).inc()
+            log.error("query_failed", extra={
+                "trace_id": trace_id,
+                "error_type": type(e).__name__,
+                "error": str(e),
+            })
+            raise HTTPException(status_code=500, detail=f"Pipeline error: {type(e).__name__}: {e}")
+
+        response = {
+            "answer": result["answer"],
+            "sources": result["sources"],
+            "model": result["model"],
+            "provider": result.get("provider"),
+            "fallback_used": result.get("fallback_used"),
         }
 
-    # Miss: run full pipeline
-    try:
-        result = answer_question(
-            req.question,
-            top_k=req.top_k,
-            retriever=retrieve_hybrid,
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Pipeline error: {type(e).__name__}: {e}")
+        try:
+            set_cached(req.question, response)
+        except Exception as e:
+            log.warning("cache_write_failed", extra={"trace_id": trace_id, "error": str(e)})
 
-    response = {
-        "answer": result["answer"],
-        "sources": result["sources"],
-        "model": result["model"],
-    }
+        latency_ms = int((time.time() - start) * 1000)
+        provider = result.get("provider") or "unknown"
+        fallback = str(result.get("fallback_used", False)).lower()
 
-    # Cache for next time
-    try:
-        set_cached(req.question, response)
-    except Exception as e:
-        # Cache failures should never break the request
-        print(f"Warning: failed to cache response: {e}")
+        QUERIES_TOTAL.labels(cache_hit="false", provider=provider, fallback_used=fallback).inc()
+        QUERY_LATENCY_MS.labels(cache_hit="false").observe(latency_ms)
+        log.info("query_served", extra={
+            "trace_id": trace_id,
+            "cache_hit": False,
+            "provider": provider,
+            "fallback_used": result.get("fallback_used"),
+            "latency_ms": latency_ms,
+        })
 
-    latency_ms = int((time.time() - start) * 1000)
-    return {**response, "latency_ms": latency_ms, "cache_hit": False, "matched_query": None}
+        return {**response, "latency_ms": latency_ms, "cache_hit": False, "matched_query": None}
 @app.get("/cache/stats")
 def get_cache_stats():
     """Return current cache size and configuration."""
@@ -188,3 +226,9 @@ def clear_cache_endpoint():
     """Clear all cached entries."""
     cleared = clear_cache()
     return {"cleared": cleared}
+
+@app.get("/metrics")
+def prometheus_metrics():
+    """Expose Prometheus metrics for scraping."""
+    CACHE_SIZE.set(cache_stats()["size"])
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)

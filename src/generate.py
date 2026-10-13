@@ -7,10 +7,10 @@ rather than hallucinate.
 """
 import os
 
-from anthropic import Anthropic
 from dotenv import load_dotenv
 
 from src.retrieve import retrieve
+from src.llm_gateway import generate as gateway_generate
 
 load_dotenv()
 
@@ -88,17 +88,14 @@ def answer_question(query: str, top_k: int = 5, retriever=None) -> dict:
 
     prompt = build_prompt(query, chunks)
 
-    client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    response = client.messages.create(
-        model=GENERATION_MODEL,
-        max_tokens=MAX_TOKENS,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    gateway_response = gateway_generate(prompt)
 
     return {
-        "answer": response.content[0].text,
+        "answer": gateway_response.text,
         "sources": chunks,
-        "model": GENERATION_MODEL,
+        "model": gateway_response.model,
+        "provider": gateway_response.provider,
+        "fallback_used": gateway_response.fallback_used,
     }
 
 
